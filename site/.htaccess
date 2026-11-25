@@ -1,0 +1,18 @@
+# Own rewrite context so the parent WordPress site's rules don't apply here.
+RewriteEngine On
+DirectoryIndex index.html index.php
+ErrorDocument 404 /404.html
+Options -Indexes
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+  <FilesMatch "\.(js|css|woff2|svg)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+</IfModule>
+# Generated config for demo.php (notification address): never served directly
+<Files "demo-config.php">
+  Require all denied
+</Files>

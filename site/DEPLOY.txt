@@ -1,0 +1,14 @@
+Datasyncher website, build 2026-11-23_2307
+
+Upload everything in this folder (including the hidden .htaccess files) to the web root of
+https://datasyncher.com, so that index.html sits at the top level. The site uses absolute links
+(/connectors/, /platform/ ...), so it must be at the root of the domain, not in a sub-folder.
+
+Needs: Apache (or LiteSpeed) with .htaccess enabled, and PHP 8 with mail() for the contact page
+("Book a demo" and "Send a message", handled by demo.php). The demo-requests/ folder must be writable by
+PHP: it keeps a copy of every request (requests.jsonl) and the security-check state, and is blocked from
+the web. Requests are emailed to the address in demo-config.php, which is never shown on the site.
+Security check: the forms only send after the visitor's browser solves a challenge from challenge.php,
+signed with the secret in demo-config.php (made fresh for every build; no third-party service or keys).
+Keep demo-config.php private; .htaccess already blocks it.
+Documentation links point to https://datasyncher.com/docs/ (keep the trailing slash).

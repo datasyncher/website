@@ -1,0 +1,6 @@
+User-Agent: *
+Allow: /
+Disallow: /demo-requests/
+Disallow: /demo.php
+
+Sitemap: https://datasyncher.com/sitemap.xml
